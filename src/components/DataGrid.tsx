@@ -62,7 +62,7 @@ export const VirtualDataGrid = ({ data, height = 500, rowHeight = 44 }: Props) =
         count: processedData.length,
         rowHeight: rowHeight,
         scrollRef: scrollRef,
-        overscan: 3
+        overscan: 30
     })
 
     const columns = '120px 2fr 100px 100px 120px 180px';
@@ -87,9 +87,7 @@ export const VirtualDataGrid = ({ data, height = 500, rowHeight = 44 }: Props) =
                     setStatusFilter(e.target.value)
                 }} value={statusFilter}>
                     {
-                        stautsList.map((it) => <option value={it} key={it} onSelect={(e) => {
-                            setStatusFilter(e.currentTarget.value)
-                        }} >
+                        stautsList.map((it) => <option value={it} key={it}  >
                             {it}
                         </option>)
                     }
@@ -123,7 +121,7 @@ export const VirtualDataGrid = ({ data, height = 500, rowHeight = 44 }: Props) =
                             style={{ padding: '0 12px', cursor: 'pointer', userSelect: 'none' }}
                         >
                             {col.toUpperCase()}
-                            {sortField === col && (sortDirection === 'asc' ? ' ▲' : ' ▼')}
+                            {sortField === col && (sortDirection === 'asc' ? '▲' : ' ▼')}
                         </div>
                     ))}
                 </div>
@@ -155,6 +153,7 @@ export const VirtualDataGrid = ({ data, height = 500, rowHeight = 44 }: Props) =
                                     borderBottom: '1px solid #eee',
                                     background: index % 2 === 0 ? '#fff' : '#f9fafb',
                                     fontSize: '13px',
+                                    willChange: 'transform'
                                 }}
                             >
                                 <div style={{ padding: '0 12px' }}>{row.id}</div>
